@@ -1,16 +1,22 @@
 import Filters from "./components/Filters/Filters"
 import Home from "./components/ProductList/Home/Home"
 import Cart from "./components/ShoppingCart/Cart/Cart"
+import {GlobalStyle, FontStyles, Body} from "./GlobalStyle"
+
 
 function App() {
   return (
+    <>
+      <GlobalStyle/>
+      <FontStyles/>
 
-    <div className="App">
-      <Filters/>
-      <Home/>
-      <Cart/>
-    </div>
-
+      <Body>
+        <Filters/>
+        <Home/>
+        <Cart/>
+      </Body>
+      
+    </>
   );
 }
 
