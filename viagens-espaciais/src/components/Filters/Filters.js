@@ -1,7 +1,8 @@
 import React from 'react'
+import { useState } from "react";
 import  {DivFilter, Form} from "./FiltersStyle"
 
-const Filters = () => {
+const Filters = (props) => {
   return (
     <DivFilter>
       
@@ -9,19 +10,29 @@ const Filters = () => {
           <label>
             Filtro Mínimo:
             <br/>
-            <input/>
+            <input 
+            value={props.minFilter}
+            onChange={props.functionMinFilter}
+            
+            />
           </label>
 
           <label>
             Filtro Máximo:
             <br/>
-            <input/>
+            <input
+            value={props.maxFilter}
+            onChange={props.functionMaxFilter}
+            />
           </label>
 
           <label>
             Buscar por nomes:
             <br/>
-            <input/>
+            <input
+            value={props.searchFilter}
+            onChange={props.functionSearch}
+            />
           </label>
           
         </Form>

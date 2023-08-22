@@ -12,16 +12,34 @@ function App() {
   const [searchFilter, setSearchFilter] = useState("");
   const [cart, setCart] = useState ("")
   const [amount, setAmount] = useState(0);
+
   // ordination = select
   const [select, setSelect] = useState("crescente")
 
-  const functionMinFilter = (event) =>{
-    setMinfilter(event.target.value);
-  }
+  // const functionMinFilter = (event) =>{
+  //   setMinfilter(event.target.value);
+  // }
 
-  const functionMaxFilter = (event) =>{
-    setMaxFilter(event.target.value);
+  // const functionMaxFilter = (event) =>{
+  //   setMaxFilter(event.target.value);
+  // }
+
+  const functionMinFilter = (event) => {
+    const inputValue = event.target.value;
+    if (!isNaN(inputValue)) {
+      const newValue = inputValue === "" ? "" : Math.max(0, parseInt(inputValue, 10));
+      setMinfilter(newValue);
+    }
   }
+  
+  const functionMaxFilter = (event) => {
+    const inputValue = event.target.value;
+    if (!isNaN(inputValue)) {
+      const newValue = inputValue === "" ? "" : Math.max(0, parseInt(inputValue, 10));
+      setMaxFilter(newValue);
+    }
+  }
+  
 
   const functionSearch = (event) =>{
     setSearchFilter(event.target.value)
@@ -32,7 +50,7 @@ function App() {
   }
 
   const functionAmount = (event) =>{
-    setAmount(Event.target.value)
+    setAmount(event.target.value)
   }
   //---------------- Forma do chat GPT--------------------//
 
@@ -67,6 +85,7 @@ function App() {
         setCart ={setCart}
         amount = {amount}
         setAmount = {setAmount}
+        // addCart={addCart}
         />
         <Cart
         cart= {cart}
