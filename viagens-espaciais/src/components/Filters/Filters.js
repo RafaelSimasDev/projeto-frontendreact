@@ -1,43 +1,47 @@
-import React from 'react'
-import { useState } from "react";
-import  {DivFilter, Form} from "./FiltersStyle"
+import React from 'react';
+import FiltroDiv from './FiltersStyle'; 
 
-const Filters = (props) => {
+function Filter({ minPrice, maxPrice, setMinPrice, setMaxPrice, searchTerm, handleSearchChange, selectedType, setSelectedType, filterProducts })  {
   return (
-    <DivFilter>
-      
-        <Form>
-          <label>
-            Filtro Mínimo:
-            <br/>
+    <FiltroDiv>
+      <h2 className="text-center">Filtrar por:</h2>
+      <form>
+        <label htmlFor="minPreco">
+          Preço mínimo:
+          <input type="number" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} placeholder="Valor mínimo" />
+        </label>
+
+        <label htmlFor="maxPreco">
+          Preço máximo:
+          <input type="number" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} placeholder="Valor máximo" />
+        </label>
+
+        <label htmlFor="">
+            Busca:
             <input 
-            value={props.minFilter}
-            onChange={props.functionMinFilter}
-            
+              type="text" 
+              value={searchTerm} 
+              onChange={handleSearchChange} 
+              placeholder="Buscar por nome"
             />
-          </label>
+        </label>
+      </form>
 
-          <label>
-            Filtro Máximo:
-            <br/>
-            <input
-            value={props.maxFilter}
-            onChange={props.functionMaxFilter}
-            />
-          </label>
+      <select 
+          value={selectedType}
+          onChange={(e) => {
+              setSelectedType(e.target.value);
+              filterProducts();
+          }}
+         >
+          <option value="Selecione">Selecione</option>
+          <option value="Tabuleiro">Tabuleiro</option>
+          <option value="Cartas">Cartas</option>
+          <option value="Peças">Peças</option>
+      </select>
 
-          <label>
-            Buscar por nomes:
-            <br/>
-            <input
-            value={props.searchFilter}
-            onChange={props.functionSearch}
-            />
-          </label>
-          
-        </Form>
-    </DivFilter>
-  )
+    </FiltroDiv>
+  );
 }
 
-export default Filters
+export default Filter;
